@@ -4,9 +4,9 @@ class Play extends Phaser.Scene {
     }
     preload() {
         // load images/tile sprites
-        this.load.image('rocket', './assets/rocket.png');
-        this.load.image('spaceship', './assets/spaceship.png');
-        this.load.image('starfield', './assets/starfield.png');
+        this.load.image('rocket', 'assets/rocket.png');
+        this.load.image('spaceship', 'assets/spaceship.png');
+        this.load.image('starfield', 'assets/starfield.png');
     }
     create() {
         //background
@@ -19,10 +19,22 @@ class Play extends Phaser.Scene {
         this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
         this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
         this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
+
+        //player rocket
+        this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - (borderUISize + 10), 'rocket').setOrigin(0.5, 0);
+
+        //movement controls
+        keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
 
     update() {
         //scrolling background
         this.starfield.tilePositionX -= 4;
+
+        //updates the player rocket
+        this.p1Rocket.update();
     }
 }
