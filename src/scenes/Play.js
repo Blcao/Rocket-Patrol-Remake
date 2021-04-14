@@ -9,7 +9,7 @@ class Play extends Phaser.Scene {
         this.load.image('starfield', 'assets/starfield.png');
 
         // load explosion spritesheet
-        this.load.spritesheet('explosion', 'assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     }
     create() {
         //background
@@ -97,17 +97,14 @@ class Play extends Phaser.Scene {
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
             this.p1Rocket.reset();
-            this.ship03.reset();
             this.shipExplode(this.ship03);
         }
         if (this.checkCollision(this.p1Rocket, this.ship02)) {
             this.p1Rocket.reset();
-            this.ship02.reset();
             this.shipExplode(this.ship02);
         }
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
             this.p1Rocket.reset();
-            this.ship01.reset();
             this.shipExplode(this.ship01);
         }
     }
